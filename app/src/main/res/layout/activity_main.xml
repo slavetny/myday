@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f0f0f0"
     tools:context=".mvp.view.MainActivity">
 
     <ProgressBar
@@ -13,7 +14,7 @@
         android:layout_height="56dp"
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/progressbar_indeterminate"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_gravity="center"/>
 
     <LinearLayout
@@ -50,12 +51,14 @@
     </LinearLayout>
 
     <at.markushi.ui.CircleButton
+        android:id="@+id/new_process_btn"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_white"
         android:padding="8dp"
+        app:cb_color="@color/orange"
         app:cb_pressedRingWidth="8dp"/>
 
 </FrameLayout>

@@ -13,6 +13,8 @@ interface ApplicationContract {
     }
 
     interface View {
+        fun addProcess()
+
         fun showProcess()
     }
 
