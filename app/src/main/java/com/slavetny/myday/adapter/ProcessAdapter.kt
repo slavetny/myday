@@ -16,7 +16,7 @@ class ProcessAdapter : RecyclerView.Adapter<ProcessAdapter.ProcessViewHolder>() 
     }
 
     override fun getItemCount(): Int {
-        return 7
+        return 0
     }
 
     override fun onBindViewHolder(holder: ProcessViewHolder, position: Int) {
@@ -32,6 +32,5 @@ class ProcessAdapter : RecyclerView.Adapter<ProcessAdapter.ProcessViewHolder>() 
         fun bind() {
 
         }
-
     }
 }

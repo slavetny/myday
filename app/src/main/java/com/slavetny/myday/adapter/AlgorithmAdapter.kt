@@ -10,6 +10,12 @@ import kotlinx.android.synthetic.main.algorthm_item.view.*
 
 class AlgorithmAdapter(var algorithmsList: List<Algorithm>) : RecyclerView.Adapter<AlgorithmAdapter.AlgorthmViewHolder>() {
 
+    private var algorithmClickedListener: OnAlgorithmClickedListener? = null
+
+    fun setOnAlgorithmClickedListener(a: OnAlgorithmClickedListener?) {
+        algorithmClickedListener = a
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlgorthmViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.algorthm_item, parent, false)
 
@@ -21,15 +27,23 @@ class AlgorithmAdapter(var algorithmsList: List<Algorithm>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: AlgorthmViewHolder, position: Int) {
-        holder.bind(algorithmsList.get(position))
+        holder.bind(algorithmsList.get(position), algorithmClickedListener!!)
     }
 
     class AlgorthmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         //TODO fix bug with wrong color showing
-        fun bind(algorithm: Algorithm) {
+        fun bind(algorithm: Algorithm, algorithmClickedListener: OnAlgorithmClickedListener) {
             itemView.algorithm_icon.setImageResource(algorithm.icon)
-            itemView.algorithm_background.setBackgroundColor(algorithm.backgroundColor)
+
+            itemView.setOnClickListener {
+                if (algorithmClickedListener != null)
+                    algorithmClickedListener.onAlgorithmClicked(algorithm)
+            }
         }
+    }
+
+    interface OnAlgorithmClickedListener {
+        fun onAlgorithmClicked(algorithm: Algorithm)
     }
 }
